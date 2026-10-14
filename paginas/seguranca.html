@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Segurança - Manual Técnico</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <img
+            class="logo-cabecalho"
+            src="../imagens/ReceitandoApp.png"
+            alt="Logo do App de Receitas"
+        >
+
+        <div class="titulo-cabecalho">
+            <h1>Manual Técnico</h1>
+            <p>Documentação do App de Receitas</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="../index.html">Início</a>
+        <a href="introducao.html">Introdução</a>
+        <a href="tecnologias.html">Tecnologias</a>
+        <a href="arquitetura.html">Arquitetura</a>
+        <a href="banco-de-dados.html">Banco de Dados</a>
+        <a href="funcionalidades.html">Funcionalidades</a>
+        <a href="paginas.html">Páginas</a>
+        <a href="seguranca.html">Segurança</a>
+        <a href="sobre-criador.html">Sobre o criador</a>
+    </nav>
+
+    <main>
+
+        <section>
+            <h2>Segurança do sistema</h2>
+
+            <p>
+                A segurança do App de Receitas envolve a proteção
+                das contas, o controle de acesso aos dados e o
+                gerenciamento dos arquivos armazenados.
+            </p>
+
+            <p>
+                O aplicativo utiliza os recursos de segurança do
+                Supabase e as regras implementadas no Flutter para
+                controlar as operações disponíveis aos usuários.
+                A proteção efetiva depende da configuração correta
+                desses recursos.
+            </p>
+        </section>
+
+        <section>
+            <h2>1. Autenticação de usuários</h2>
+
+            <p>
+                O Supabase Auth é utilizado para gerenciar o cadastro,
+                o login e a sessão dos usuários.
+            </p>
+
+            <p>
+                A autenticação permite identificar a conta que está
+                utilizando o aplicativo. Esse identificador pode ser
+                utilizado nas regras de acesso aos dados.
+            </p>
+
+            <ul>
+                <li>Cadastro de contas;</li>
+                <li>Login com e-mail e senha;</li>
+                <li>Encerramento da sessão ao sair da conta;</li>
+                <li>Fluxo de recuperação de senha, conforme configurado.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>2. Controle de acesso ao banco de dados</h2>
+
+            <p>
+                O banco de dados utiliza políticas de acesso para
+                determinar quais operações cada usuário autenticado
+                pode realizar.
+            </p>
+
+            <p>
+                O Supabase oferece o recurso Row Level Security (RLS),
+                que permite aplicar regras diretamente nas tabelas.
+                Quando configurado corretamente, ele ajuda a impedir
+                que um usuário consulte ou altere registros que não
+                estão autorizados para sua conta.
+            </p>
+
+            <p>
+                As políticas devem considerar as tabelas utilizadas
+                pelo aplicativo, como <code>profiles</code>,
+                <code>receitas</code>, <code>ingredientes</code> e
+                <code>favoritos</code>.
+            </p>
+        </section>
+
+        <section>
+            <h2>3. Proteção das receitas</h2>
+
+            <p>
+                O aplicativo deve diferenciar as receitas criadas
+                pelos usuários daquelas disponibilizadas previamente
+                pelo sistema.
+            </p>
+
+            <p>
+                A edição e a exclusão de receitas próprias devem
+                ser permitidas somente quando o usuário tiver
+                autorização para realizar essas operações.
+            </p>
+
+            <p>
+                As receitas previamente disponibilizadas pelo sistema
+                devem permanecer protegidas contra alterações ou
+                exclusões realizadas por usuários comuns.
+            </p>
+
+            <p>
+                Além de ocultar ou desabilitar botões na interface,
+                é importante configurar as políticas de banco de dados
+                para impedir operações não autorizadas diretamente
+                pela API.
+            </p>
+        </section>
+
+        <section>
+            <h2>4. Proteção dos favoritos</h2>
+
+            <p>
+                Os favoritos são associados ao identificador do
+                usuário autenticado. Assim, cada conta deve conseguir
+                consultar e administrar apenas os registros que
+                lhe pertencem.
+            </p>
+
+            <p>
+                A tabela <code>favoritos</code> utiliza os campos
+                <code>user_id</code> e <code>receita_id</code> para
+                relacionar o usuário à receita favoritada.
+            </p>
+        </section>
+
+        <section>
+            <h2>5. Segurança das imagens</h2>
+
+            <p>
+                O Supabase Storage armazena as imagens das receitas
+                e as fotos de perfil nos seguintes buckets:
+            </p>
+
+            <ul>
+                <li><code>recipe-images</code> — imagens de receitas;</li>
+                <li><code>profile-images</code> — fotos de perfil.</li>
+            </ul>
+
+            <p>
+                As políticas de armazenamento devem controlar quem
+                pode enviar, substituir ou excluir arquivos.
+                Quando necessário, as regras podem limitar essas
+                operações aos arquivos associados ao próprio usuário.
+            </p>
+
+            <p>
+                Mesmo quando um bucket permite a leitura pública
+                de imagens, isso não significa que qualquer pessoa
+                deva poder modificar ou excluir os arquivos.
+                Leitura e alteração são permissões diferentes.
+            </p>
+        </section>
+
+        <section>
+            <h2>6. Proteção de credenciais</h2>
+
+            <p>
+                As credenciais utilizadas para conectar o aplicativo
+                ao Supabase devem ser tratadas corretamente.
+            </p>
+
+            <p>
+                A chave pública destinada ao cliente pode ser utilizada
+                no aplicativo quando as políticas de acesso estiverem
+                configuradas adequadamente. Já a chave secreta ou
+                a chave administrativa, como a antiga
+                <code>service_role</code>, nunca deve ser incluída
+                no código distribuído ao usuário.
+            </p>
+
+            <p>
+                Senhas pessoais também não devem ser armazenadas
+                diretamente nas tabelas do aplicativo. O gerenciamento
+                das senhas deve ser realizado pelo serviço de
+                autenticação.
+            </p>
+        </section>
+
+        <section>
+            <h2>7. Validação dos dados</h2>
+
+            <p>
+                Os campos dos formulários devem ser validados antes
+                de enviar os dados ao banco de dados.
+            </p>
+
+            <p>Alguns exemplos de validação são:</p>
+
+            <ul>
+                <li>Verificar se os campos obrigatórios foram preenchidos;</li>
+                <li>Validar se o tempo de preparo e as porções possuem
+                    valores adequados;</li>
+                <li>Evitar salvar receitas sem as informações necessárias;</li>
+                <li>Apresentar mensagens claras quando ocorrer um erro.</li>
+            </ul>
+
+            <p>
+                As validações feitas na interface devem ser
+                complementadas por restrições e políticas no banco
+                de dados sempre que necessário.
+            </p>
+        </section>
+
+        <section>
+            <h2>8. Encerramento da sessão</h2>
+
+            <p>
+                Ao selecionar a opção de sair, o aplicativo utiliza
+                o método de encerramento de sessão do Supabase Auth.
+                Isso evita que a conta continue autenticada naquela
+                sessão do aplicativo.
+            </p>
+
+            <p>
+                Após o encerramento, a navegação deve retornar à
+                tela de login, impedindo que o usuário continue
+                utilizando as áreas restritas como se ainda estivesse
+                autenticado.
+            </p>
+        </section>
+
+        <section>
+            <h2>Considerações finais</h2>
+
+            <p>
+                A segurança do aplicativo depende da combinação
+                entre autenticação, políticas de acesso, validação
+                dos dados e gerenciamento adequado dos arquivos.
+                Esses mecanismos devem ser testados para verificar
+                se usuários sem autorização não conseguem consultar,
+                modificar ou excluir informações protegidas.
+            </p>
+
+            <p>
+                Esta documentação descreve as medidas de segurança
+                utilizadas ou previstas no projeto. Antes da entrega,
+                é importante confirmar se cada política está realmente
+                configurada e funcionando no Supabase.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Manual Técnico do App de Receitas</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Banco de Dados | Manual Técnico</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <img class="logo-cabecalho"
+             src="../imagens/ReceitandoApp.png"
+             alt="Logo do Receitando">
+
+        <div class="titulo-cabecalho">
+            <h1>Manual Técnico</h1>
+            <p>Documentação do Receitando</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="../index.html">Início</a>
+        <a href="introducao.html">Introdução</a>
+        <a href="tecnologias.html">Tecnologias</a>
+        <a href="arquitetura.html">Arquitetura</a>
+        <a href="banco-de-dados.html">Banco de Dados</a>
+        <a href="funcionalidades.html">Funcionalidades</a>
+        <a href="paginas.html">Páginas</a>
+        <a href="seguranca.html">Segurança</a>
+        <a href="sobre-criador.html">Sobre o criador</a>
+    </nav>
+
+    <main>
+
+        <section>
+            <h2>1. Banco de Dados</h2>
+
+            <p>
+                O Receitando utiliza o Supabase como
+                plataforma de backend. Os dados estruturados
+                são armazenados em um banco de dados PostgreSQL,
+                que permite organizar as informações em tabelas
+                e estabelecer relacionamentos entre elas.
+            </p>
+
+            <p>
+                O banco de dados é utilizado para armazenar
+                informações das receitas, ingredientes,
+                categorias, perfis e favoritos dos usuários.
+            </p>
+        </section>
+
+        <section>
+            <h2>2. Principais tabelas</h2>
+
+            <p>
+                As tabelas organizam os dados utilizados
+                pelas diferentes funcionalidades do aplicativo.
+            </p>
+
+            <h3>2.1. profiles</h3>
+
+            <p>
+                Armazena informações complementares dos
+                usuários autenticados.
+            </p>
+
+            <ul>
+                <li><strong>id:</strong> identificador do usuário.</li>
+                <li><strong>nome:</strong> nome do usuário.</li>
+                <li><strong>email:</strong> endereço de e-mail.</li>
+                <li><strong>foto_url:</strong> endereço da imagem do perfil.</li>
+                <li><strong>data_criacao:</strong> data de criação do registro.</li>
+            </ul>
+
+            <p>
+            --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            </p>
+
+            <h3>2.2. receitas</h3>
+
+            <p>
+                Armazena as informações principais de cada receita.
+            </p>
+
+            <ul>
+                <li><strong>id:</strong> identificador da receita.</li>
+                <li><strong>user_id:</strong> identificador do usuário.</li>
+                <li><strong>titulo:</strong> nome da receita.</li>
+                <li><strong>descricao:</strong> descrição da receita.</li>
+                <li><strong>modo_preparo:</strong> instruções de preparo.</li>
+                <li><strong>tempo_preparo:</strong> tempo necessário para preparar.</li>
+                <li><strong>porcoes:</strong> quantidade de porções.</li>
+                <li><strong>imagem_url:</strong> endereço da imagem da receita.</li>
+                <li><strong>data_criacao:</strong> data de criação da receita.</li>
+                <li><strong>data_atualizacao:</strong> data de atualização da receita.</li>
+                <li><strong>publica:</strong> define se a receita criada é visível para todos.</li>
+            </ul>
+
+            <p>
+            --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            </p>
+
+            <h3>2.3. ingredientes</h3>
+
+            <p>
+                Armazena os ingredientes associados às receitas,
+                incluindo seus nomes, quantidades e unidades
+                de medida, conforme as colunas existentes.
+            </p>
+
+            <ul>
+                <li><strong>id:</strong> identificador do ingrediente.</li>
+                <li><strong>receita_id:</strong> identificador da receita.</li>
+                <li><strong>nome:</strong> nome da receita.</li>
+                <li><strong>quantidade:</strong> quantidade numérica da receita.</li>
+                <li><strong>unidade:</strong> unidade de medida da receita.</li>
+            </ul>
+
+            <p>
+            --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            </p>
+
+            <h3>2.4. categorias</h3>
+
+            <p>
+                Armazena as categorias utilizadas para organizar
+                as receitas, como massas, carnes, sobremesas,
+                saladas e bebidas.
+            </p>
+
+            <ul>
+                <li><strong>id:</strong> identificador da categoria.</li>
+                <li><strong>nome:</strong> nome da categoria.</li>
+            </ul>
+
+            <p>
+            --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            </p>
+
+            <h3>2.5. receita_categorias</h3>
+
+            <p>
+                Estabelece a relação entre receitas e categorias.
+                Essa tabela permite associar receitas às categorias
+                correspondentes.
+            </p>
+
+            <ul>
+                <li><strong>receita_id:</strong> identificador da receita.</li>
+                <li><strong>categoria_id:</strong> identificador da categoria.</li>
+            </ul>
+
+            <p>
+            --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            </p>
+
+            <h3>2.6. favoritos</h3>
+
+            <p>
+                Registra as receitas favoritedas pelos usuários,
+                permitindo recuperar a lista de favoritos de cada
+                conta.
+            </p>
+
+            <ul>
+                <li><strong>id:</strong> identificador do registro.</li>
+                <li><strong>user_id:</strong> identificador do usuário.</li>
+                <li><strong>receita_id:</strong> identificador da receita.</li>
+                <li><strong>data_criacao:</strong> data em que a receita foi favoritada.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. Relacionamentos entre tabelas</h2>
+
+            <p>
+                As tabelas são relacionadas por identificadores
+                e chaves estrangeiras. Esses relacionamentos
+                permitem associar os ingredientes, as categorias
+                e os favoritos às receitas e aos respectivos usuários.
+            </p>
+
+            <ul>
+                <li>
+                    <strong>Receitas e ingredientes:</strong>
+                    relacionam uma receita aos seus ingredientes.
+                </li>
+
+                <li>
+                    <strong>Receitas e categorias:</strong>
+                    utilizam a tabela receita_categorias para
+                    estabelecer a associação entre receitas
+                    e categorias.
+                </li>
+
+                <li>
+                    <strong>Usuários e favoritos:</strong>
+                    permitem identificar quais receitas foram
+                    salvas por cada usuário.
+                </li>
+
+                <li>
+                    <strong>Usuários e perfis:</strong>
+                    associam as informações complementares
+                    do perfil à conta correspondente.
+                </li>
+            </ul>
+
+            <p>
+                A configuração exata das chaves primárias,
+                chaves estrangeiras e restrições deve ser
+                consultada no esquema do banco de dados.
+            </p>
+        </section>
+
+        <section>
+            <h2>4. Armazenamento de imagens</h2>
+
+            <p>
+                O Supabase Storage é utilizado para armazenar
+                arquivos de imagem, evitando que os arquivos
+                binários precisem ser gravados diretamente
+                nas tabelas do banco de dados.
+            </p>
+
+            <h3>4.1. profile-images</h3>
+
+            <p>
+                Bucket destinado às imagens de perfil
+                dos usuários.
+            </p>
+
+            <h3>4.2. recipe-images</h3>
+
+            <p>
+                Bucket destinado às imagens das receitas.
+            </p>
+
+            <p>
+                Os endereços das imagens podem ser armazenados
+                nos registros correspondentes e utilizados
+                pelo aplicativo para exibir os arquivos.
+            </p>
+        </section>
+
+        <section>
+            <h2>5. Segurança e permissões</h2>
+
+            <p>
+                O acesso aos dados deve respeitar as permissões
+                configuradas no Supabase. As políticas de Row
+                Level Security (RLS) permitem definir quais
+                registros podem ser consultados ou modificados
+                por cada usuário.
+            </p>
+
+            <p>
+                As permissões de armazenamento também devem
+                controlar o envio, a leitura, a atualização
+                e a exclusão de imagens, conforme as regras
+                estabelecidas para cada bucket.
+            </p>
+        </section>
+
+        <section>
+            <h2>6. Considerações finais</h2>
+
+            <p>
+                A utilização do PostgreSQL e do Supabase permite
+                centralizar os dados do aplicativo, organizar
+                os relacionamentos entre as informações e
+                disponibilizar serviços de autenticação
+                e armazenamento de arquivos.
+            </p>
+
+            <p>
+                A estrutura documentada deve corresponder
+                às tabelas, colunas e políticas efetivamente
+                configuradas no projeto.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Manual Técnico do Receitando — 2026</p>
+    </footer>
+
+</body>
+</html>

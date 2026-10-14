@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Funcionalidades - Manual Técnico</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <img
+            class="logo-cabecalho"
+            src="../imagens/ReceitandoApp.png"
+            alt="Logo do Receitando"
+        >
+
+        <div class="titulo-cabecalho">
+            <h1>Manual Técnico</h1>
+            <p>Documentação do Receitando</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="../index.html">Início</a>
+        <a href="introducao.html">Introdução</a>
+        <a href="tecnologias.html">Tecnologias</a>
+        <a href="arquitetura.html">Arquitetura</a>
+        <a href="banco-de-dados.html">Banco de Dados</a>
+        <a href="funcionalidades.html">Funcionalidades</a>
+        <a href="paginas.html">Páginas</a>
+        <a href="seguranca.html">Segurança</a>
+        <a href="sobre-criador.html">Sobre o criador</a>
+    </nav>
+
+    <main>
+
+        <section>
+            <h2>Funcionalidades do sistema</h2>
+
+            <p>
+                O App de Receitas foi desenvolvido para permitir que
+                os usuários encontrem receitas, consultem seus detalhes,
+                cadastrem preparações próprias e organizem suas receitas
+                favoritas.
+            </p>
+
+            <p>
+                O aplicativo utiliza Flutter e Dart para sua interface
+                e lógica, enquanto o Supabase é responsável pelos
+                serviços de autenticação, banco de dados e armazenamento
+                de imagens.
+            </p>
+        </section>
+
+        <section>
+            <h2>1. Cadastro e autenticação</h2>
+
+            <p>
+                O sistema possui funcionalidades de autenticação para
+                identificar os usuários e permitir o acesso à sua conta.
+            </p>
+
+            <ul>
+                <li>Cadastro de uma nova conta.</li>
+                <li>Login com e-mail e senha.</li>
+                <li>Encerramento da sessão por meio da opção de sair.</li>
+                <li>Recuperação de senha por e-mail, conforme o fluxo
+                    configurado no projeto.</li>
+            </ul>
+
+            <p>
+                A autenticação é realizada pelo Supabase Auth. Após
+                o login bem-sucedido, o usuário pode acessar o menu
+                principal do aplicativo.
+            </p>
+        </section>
+
+        <section>
+            <h2>2. Menu principal</h2>
+
+            <p>
+                O menu principal funciona como ponto de acesso às
+                funcionalidades do aplicativo.
+            </p>
+
+            <p>
+                A partir dele, o usuário pode acessar a área de receitas
+                e iniciar o cadastro de uma nova receita. Outras opções,
+                quando implementadas na interface, podem incluir o perfil
+                e a lista de favoritos.
+            </p>
+        </section>
+
+        <section>
+            <h2>3. Consulta de receitas</h2>
+
+            <p>
+                A tela de receitas apresenta as preparações cadastradas
+                no banco de dados. Cada item pode exibir informações
+                como título, descrição, tempo de preparo, imagem e
+                categoria.
+            </p>
+
+            <h3>Pesquisa</h3>
+
+            <p>
+                O campo de pesquisa permite localizar receitas pelo
+                texto informado, facilitando a navegação quando existem
+                várias opções cadastradas.
+            </p>
+
+            <h3>Filtro por categorias</h3>
+
+            <p>
+                As receitas podem ser organizadas por categorias, como:
+            </p>
+
+            <ul>
+                <li>Massas;</li>
+                <li>Carnes;</li>
+                <li>Sobremesas;</li>
+                <li>Saladas;</li>
+                <li>Bebidas.</li>
+            </ul>
+
+            <p>
+                A opção "Todas" permite visualizar receitas sem restringir
+                a seleção a uma categoria específica.
+            </p>
+
+            <h3>Imagens das receitas</h3>
+
+            <p>
+                As imagens podem ser armazenadas no Supabase Storage.
+                O endereço da imagem é associado à receita para que
+                o aplicativo consiga carregá-la na interface.
+            </p>
+        </section>
+
+        <section>
+            <h2>4. Detalhes da receita</h2>
+
+            <p>
+                Ao selecionar uma receita, o usuário acessa uma tela
+                com informações mais completas sobre a preparação.
+            </p>
+
+            <p>Entre as informações que podem ser apresentadas estão:</p>
+
+            <ul>
+                <li>Título e descrição;</li>
+                <li>Imagem da receita;</li>
+                <li>Tempo de preparo;</li>
+                <li>Quantidade de porções;</li>
+                <li>Ingredientes e respectivas quantidades;</li>
+                <li>Modo de preparo.</li>
+            </ul>
+
+            <p>
+                A tela também permite acessar ações relacionadas à
+                receita, como favoritar e, quando permitido, editar
+                ou excluir uma receita criada pelo próprio usuário.
+            </p>
+        </section>
+
+        <section>
+            <h2>5. Cadastro de receitas</h2>
+
+            <p>
+                A funcionalidade de cadastro permite que o usuário
+                adicione suas próprias preparações ao aplicativo.
+            </p>
+
+            <p>O formulário pode conter os seguintes dados:</p>
+
+            <ul>
+                <li>Título da receita;</li>
+                <li>Descrição;</li>
+                <li>Tempo de preparo;</li>
+                <li>Quantidade de porções;</li>
+                <li>Ingredientes, quantidades e unidades;</li>
+                <li>Modo de preparo;</li>
+                <li>Imagem selecionada da galeria do dispositivo.</li>
+            </ul>
+
+            <p>
+                Depois do preenchimento, os dados são enviados ao
+                Supabase para serem armazenados nas tabelas correspondentes.
+                Quando uma imagem é selecionada, o arquivo é enviado
+                ao bucket de imagens de receitas.
+            </p>
+        </section>
+
+        <section>
+            <h2>6. Edição e exclusão de receitas</h2>
+
+            <p>
+                O usuário pode editar ou excluir as receitas que criou,
+                respeitando as permissões definidas no aplicativo e
+                no banco de dados.
+            </p>
+
+            <p>
+                As receitas disponibilizadas previamente pelo sistema
+                não devem permitir edição ou exclusão pelo usuário comum.
+                Essa restrição ajuda a preservar o conteúdo original
+                fornecido pelo aplicativo.
+            </p>
+
+            <p>
+                Quando uma imagem própria é substituída ou removida,
+                o aplicativo também pode excluir o arquivo antigo do
+                armazenamento, evitando manter imagens desnecessárias.
+            </p>
+        </section>
+
+        <section>
+            <h2>7. Receitas favoritas</h2>
+
+            <p>
+                A funcionalidade de favoritos permite que o usuário
+                marque receitas para encontrá-las com mais facilidade
+                posteriormente.
+            </p>
+
+            <p>
+                Os registros são armazenados na tabela
+                <code>favoritos</code>, que relaciona o usuário à receita
+                selecionada.
+            </p>
+
+            <p>
+                Cada registro utiliza o identificador do usuário e o
+                identificador da receita. Dessa forma, é possível
+                recuperar os favoritos associados à conta autenticada.
+            </p>
+        </section>
+
+        <section>
+            <h2>8. Perfil do usuário</h2>
+
+            <p>
+                A área de perfil reúne informações da conta e permite
+                consultar ou atualizar os dados disponibilizados
+                nessa tela.
+            </p>
+
+            <p>
+                As informações do perfil são armazenadas na tabela
+                <code>profiles</code>. Caso o usuário selecione uma
+                foto, o arquivo pode ser enviado ao bucket
+                <code>profile-images</code>, enquanto o endereço
+                correspondente é utilizado no perfil.
+            </p>
+        </section>
+
+        <section>
+            <h2>9. Integração com o Supabase</h2>
+
+            <p>
+                O Supabase conecta o aplicativo aos serviços necessários
+                para seu funcionamento.
+            </p>
+
+            <ul>
+                <li>
+                    <strong>Supabase Auth:</strong> gerenciamento
+                    de autenticação e sessão.
+                </li>
+                <li>
+                    <strong>PostgreSQL:</strong> armazenamento de
+                    receitas, ingredientes, categorias, favoritos
+                    e dados de perfil.
+                </li>
+                <li>
+                    <strong>Supabase Storage:</strong> armazenamento
+                    de imagens de receitas e fotos de perfil.
+                </li>
+                <li>
+                    <strong>Row Level Security (RLS):</strong>
+                    aplicação de regras de acesso aos dados,
+                    conforme as políticas configuradas.
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Considerações finais</h2>
+
+            <p>
+                As funcionalidades do App de Receitas foram organizadas
+                para facilitar a consulta, o cadastro e a organização
+                de preparações culinárias. A integração entre Flutter
+                e Supabase permite combinar uma interface interativa
+                com armazenamento persistente de dados e imagens.
+            </p>
+
+            <p>
+                Esta documentação deve ser atualizada sempre que uma
+                funcionalidade for alterada ou adicionada ao código
+                definitivo do aplicativo.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Manual Técnico do App de Receitas</p>
+    </footer>
+
+</body>
+</html>

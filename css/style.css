@@ -1,0 +1,151 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: #263238;
+    line-height: 1.7;
+}
+
+/* Cabeçalho */
+
+header {
+    background-color: #ffde59;
+    color: black;
+    padding: 25px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.logo-cabecalho {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.titulo-cabecalho h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.titulo-cabecalho p {
+    margin: 0;
+}
+
+@media (max-width: 500px) {
+    .logo-cabecalho {
+        width: 45px;
+        height: 45px;
+        left: 10px;
+    }
+
+    .titulo-cabecalho h1 {
+        font-size: 24px;
+    }
+}
+
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+/* Navegação */
+nav {
+    background-color: #ffffff;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-bottom: 1px solid #dddddd;
+}
+
+nav a {
+    color: #c59b13;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 10px;
+}
+
+nav a:hover {
+    color: #3b9871;
+    text-decoration: underline;
+}
+
+/* Conteúdo principal */
+main {
+    max-width: 1000px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+section {
+    background-color: white;
+    margin-bottom: 25px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #0000000d;
+}
+
+section h2 {
+    color: #c59b13;
+    margin-bottom: 12px;
+}
+
+
+/* Logo ao lado do título da tecnologia */
+.titulo-tecnologia {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.logo-tecnologia {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.titulo-tecnologia h2,
+.titulo-tecnologia h3 {
+    margin: 0;
+}
+
+
+/* Rodapé */
+footer {
+    background-color: #e8eee9;
+    color: #45564c;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* Só para o preview */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 25px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    main {
+        margin: 20px auto;
+    }
+}

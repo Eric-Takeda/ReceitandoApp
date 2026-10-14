@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tecnologias | Manual Técnico</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <img class="logo-cabecalho"
+             src="../imagens/ReceitandoApp.png"
+             alt="Logo do Receitando">
+
+        <div class="titulo-cabecalho">
+            <h1>Manual Técnico</h1>
+            <p>Documentação do Receitando</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="../index.html">Início</a>
+        <a href="introducao.html">Introdução</a>
+        <a href="tecnologias.html">Tecnologias</a>
+        <a href="arquitetura.html">Arquitetura</a>
+        <a href="banco-de-dados.html">Banco de Dados</a>
+        <a href="funcionalidades.html">Funcionalidades</a>
+        <a href="paginas.html">Páginas</a>
+        <a href="seguranca.html">Segurança</a>
+        <a href="sobre-criador.html">Sobre o criador</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>1. Tecnologias Utilizadas</h2>
+
+            <p>
+                O desenvolvimento do Receitando utiliza
+                ferramentas e tecnologias responsáveis pela
+                construção da interface, implementação da lógica
+                e armazenamento das informações.
+            </p>
+        </section>
+
+        <section>
+            
+            <div class="titulo-tecnologia">
+                <img class="logo-tecnologia" src="../imagens/logos/flutter.png" alt="Logo do Flutter">
+                <h2>2. Flutter</h2>
+            </div>
+
+
+            <p>
+                Flutter é um framework utilizado para desenvolver
+                a interface do aplicativo. Ele permite criar telas,
+                botões, formulários, listas e outros componentes
+                visuais para dispositivos móveis.
+            </p>
+
+            <p>
+                No projeto, o Flutter é responsável pela
+                apresentação das telas e pela navegação
+                entre as funcionalidades.
+            </p>
+
+            <p>
+                Documentação:
+                <a href="https://docs.flutter.dev/" target="_blank"
+                   rel="noopener noreferrer">
+                    Flutter
+                </a>
+            </p>
+            <p>
+                Instalação:
+                <a href="https://flutter.dev/" target="_blank"
+                    rel="noopener noreferrer">
+                    Flutter
+                </a>
+            </p>
+        </section>
+
+        <section>
+            
+            <div class="titulo-tecnologia">
+                <img class="logo-tecnologia" src="../imagens/logos/dart.jpg" alt="Logo da linguagem Dart">
+
+                <h2>3. Dart</h2>
+            </div>
+
+            <p>
+                Dart é a linguagem de programação utilizada
+                para desenvolver a lógica do aplicativo.
+                Ela permite implementar validações, operações
+                com dados e interações realizadas pelo usuário.
+            </p>
+
+            <p>
+                No projeto, Dart é utilizado para controlar
+                o comportamento das telas e a comunicação
+                com o Supabase.
+            </p>
+
+            <p>
+                Documentação:
+                <a href="https://dart.dev/guides"
+                   target="_blank" rel="noopener noreferrer">
+                    Dart
+                </a>
+            </p>
+            <p>
+                Instalação:
+                <a href="https://dart.dev/get-dart" target="_blank"
+                    rel="noopener noreferrer">
+                    Dart
+                </a>
+            </p>
+        </section>
+
+        <section>
+            
+            <div class="titulo-tecnologia">
+                <img class="logo-tecnologia" src="../imagens/logos/androidstudio.webp" alt="Logo do Android Studio">
+
+                <h2>4. Android Studio</h2>
+            </div>
+
+
+            <p>
+                Android Studio é o ambiente de desenvolvimento
+                utilizado para escrever, organizar e executar
+                o código do aplicativo.
+            </p>
+
+            <p>
+                Ele oferece ferramentas para depuração,
+                gerenciamento do projeto e execução em
+                emuladores ou dispositivos Android.
+            </p>
+
+            <p>
+                Documentação e instalação:
+                <a href="https://developer.android.com/studio"
+                   target="_blank" rel="noopener noreferrer">
+                    Android Studio
+                </a>
+            </p>
+        </section>
+
+        <section>
+            
+            <div class="titulo-tecnologia">
+                <img class="logo-tecnologia" src="../imagens/logos/supabase.webp" alt="Logo do Supabase">
+
+                <h2>5. Supabase</h2>
+            </div>
+
+
+            <p>
+                Supabase é uma plataforma de serviços de backend
+                utilizada pelo aplicativo para gerenciar dados,
+                autenticação e armazenamento de arquivos.
+            </p>
+
+            <p>
+                No projeto, ele é utilizado para autenticar
+                usuários, armazenar informações das receitas
+                e guardar imagens no Storage.
+            </p>
+
+            <p>
+                Documentação:
+                <a href="https://supabase.com/docs"
+                   target="_blank" rel="noopener noreferrer">
+                    Supabase
+                </a>
+            </p>
+        </section>
+
+        <section>
+            
+            <div class="titulo-tecnologia">
+                <img class="logo-tecnologia" src="../imagens/logos/postgresql.webp" alt="Logo do PostgreSQL">
+
+                <h2>6. PostgreSQL</h2>
+            </div>
+
+            <p>
+                PostgreSQL é o sistema de gerenciamento de banco
+                de dados relacional utilizado pelo Supabase.
+                Ele permite organizar informações em tabelas
+                e estabelecer relacionamentos entre registros.
+            </p>
+
+            <p>
+                No App de Receitas, os dados são organizados
+                em tabelas como receitas, ingredientes,
+                categorias e favoritos.
+            </p>
+
+            <p>
+                Documentação:
+                <a href="https://www.postgresql.org/docs/"
+                   target="_blank" rel="noopener noreferrer">
+                    PostgreSQL
+                </a>
+            </p>
+        </section>
+
+        <section>
+            <h2>7. Bibliotecas utilizadas</h2>
+
+            <h3>7.1. supabase_flutter</h3>
+
+            <p>
+                Biblioteca responsável por integrar o aplicativo
+                Flutter aos serviços do Supabase, permitindo
+                realizar operações de autenticação e acesso
+                aos dados.
+            </p>
+
+            <h3>7.2. image_picker</h3>
+
+            <p>
+                Biblioteca utilizada para permitir a seleção
+                de imagens do dispositivo, como fotografias
+                de perfil e imagens de receitas.
+            </p>
+
+            <p>
+                As bibliotecas e suas versões podem ser
+                consultadas no arquivo pubspec.yaml do projeto.
+            </p>
+
+            <h3>7.3. shared_preferences</h3>
+
+            <p>
+                Biblioteca que permite armazenar pequenas informações
+                localmente no dispositivo. Sua utilização efetiva deve
+                ser confirmada no código-fonte do aplicativo.
+            </p>
+
+            <h3>7.4. cupertino_icons</h3>
+
+            <p>
+                Biblioteca que disponibiliza ícones com estilo visual
+                do iOS para utilização na interface Flutter.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Manual Técnico do Receitando — 2026</p>
+    </footer>
+
+</body>
+</html>

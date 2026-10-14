@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Arquitetura | Manual Técnico</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <img class="logo-cabecalho"
+             src="../imagens/ReceitandoApp.png"
+             alt="Logo do Receitando">
+
+        <div class="titulo-cabecalho">
+            <h1>Manual Técnico</h1>
+            <p>Documentação do Receitando</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="../index.html">Início</a>
+        <a href="introducao.html">Introdução</a>
+        <a href="tecnologias.html">Tecnologias</a>
+        <a href="arquitetura.html">Arquitetura</a>
+        <a href="banco-de-dados.html">Banco de Dados</a>
+        <a href="funcionalidades.html">Funcionalidades</a>
+        <a href="paginas.html">Páginas</a>
+        <a href="seguranca.html">Segurança</a>
+        <a href="sobre-criador.html">Sobre o criador</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>1. Arquitetura do Sistema</h2>
+
+            <p>
+                A arquitetura do Receitando é composta
+                pelo aplicativo desenvolvido em Flutter,
+                pela lógica implementada em Dart e pelos
+                serviços de backend disponibilizados pelo
+                Supabase.
+            </p>
+
+            <p>
+                Essa organização permite separar a interface
+                apresentada ao usuário dos serviços responsáveis
+                pela autenticação, persistência dos dados e
+                armazenamento de imagens.
+            </p>
+        </section>
+
+        <section>
+            <h2>2. Organização do Projeto</h2>
+
+            <p>
+                Os arquivos do aplicativo são organizados
+                em diretórios e arquivos Dart, que contêm
+                as telas, os componentes visuais e a lógica
+                necessária para executar as funcionalidades.
+            </p>
+
+            <p>
+                A pasta lib é o principal diretório do código
+                Dart do aplicativo Flutter.
+            </p>
+
+            <pre><code>
+Aplicativo/
+├── lib/
+│   ├── main.dart
+│   ├── theme_controller.dart
+│   └── pages/
+│       ├── login_page.dart
+│       ├── cadastro_page.dart
+│       ├── recuperar_senha_page.dart
+│       ├── nova_senha_page.dart
+│       ├── home_page.dart
+│       ├── receitas_page.dart
+│       ├── detalhe_receita_page.dart
+│       ├── criar_receita_page.dart
+│       ├── editar_receita_page.dart
+│       ├── favoritos_page.dart
+│       ├── perfil_page.dart
+│       ├── configuracoes_page.dart
+│       └── sobre_page.dart
+├── assets/
+│   └── ReceitandoApp.png
+└── pubspec.yaml
+</code></pre>
+
+            <p>
+                A estrutura acima é um exemplo ilustrativo.
+                Os nomes e a localização dos arquivos devem
+                ser conferidos na estrutura real do projeto.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>3. Arquivo principal</h2>
+
+            <h3>main.dart</h3>
+
+            <p>
+                O arquivo main.dart é o ponto de entrada do
+                aplicativo Flutter. Ele é responsável por iniciar
+                a aplicação e configurar os elementos necessários
+                para seu funcionamento.
+            </p>
+
+            <p>
+                Neste projeto, esse arquivo também realiza a
+                inicialização do Supabase, serviço utilizado
+                para autenticação de usuários, acesso ao banco
+                de dados e gerenciamento de arquivos.
+            </p>
+
+            <p>
+                Após a inicialização, o aplicativo apresenta
+                a tela inicial definida na configuração do projeto,
+                permitindo que o usuário comece a navegar pelo sistema.
+            </p>
+        </section>
+
+        <section>
+            <h2>4. Organização das telas e componentes</h2>
+
+            <p>
+                As telas e os componentes do aplicativo estão
+                organizados no diretório lib/. As páginas ficam
+                na pasta pages/, enquanto o arquivo principal e
+                outros componentes de controle permanecem
+                diretamente no diretório lib/.
+            </p>
+
+            <p>
+            --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            </p>
+
+            <h3>4.1. Autenticação e acesso</h3>
+
+            <ul>
+                <li>
+                    <strong>LoginPage:</strong>
+                    permite que o usuário acesse sua conta.
+                </li>
+
+                <li>
+                    <strong>CadastroPage:</strong>
+                    permite criar uma nova conta no aplicativo.
+                </li>
+
+                <li>
+                    <strong>RecuperarSenhaPage:</strong>
+                    permite solicitar a recuperação da senha
+                    por e-mail.
+                </li>
+
+                <li>
+                    <strong>NovaSenhaPage:</strong>
+                    permite definir uma nova senha durante
+                    o processo de recuperação.
+                </li>
+            </ul>
+
+            <p>
+            --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            </p>
+
+            <h3>4.2. Navegação e gerenciamento de receitas</h3>
+
+            <ul>
+                <li>
+                    <strong>HomePage:</strong>
+                    apresenta o menu principal e as opções
+                    de navegação do aplicativo.
+                </li>
+
+                <li>
+                    <strong>ReceitasPage:</strong>
+                    apresenta a lista de receitas, a pesquisa
+                    e os filtros por categoria.
+                </li>
+
+                <li>
+                    <strong>DetalheReceitaPage:</strong>
+                    apresenta as informações detalhadas
+                    de uma receita.
+                </li>
+
+                <li>
+                    <strong>CriarReceitaPage:</strong>
+                    permite cadastrar receitas próprias.
+                </li>
+
+                <li>
+                    <strong>EditarReceitaPage:</strong>
+                    permite alterar informações das receitas
+                    que o usuário tem autorização para editar.
+                </li>
+
+                <li>
+                    <strong>FavoritosPage:</strong>
+                    apresenta as receitas salvas como favoritas.
+                </li>
+            </ul>
+
+            <p>
+            --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            </p>
+
+            <h3>4.3. Perfil e informações do aplicativo</h3>
+
+            <ul>
+                <li>
+                    <strong>PerfilPage:</strong>
+                    apresenta e permite gerenciar as informações
+                    do perfil do usuário.
+                </li>
+
+                <li>
+                    <strong>ConfiguracoesPage:</strong>
+                    reúne as opções de configuração disponíveis
+                    no aplicativo.
+                </li>
+
+                <li>
+                    <strong>SobrePage:</strong>
+                    apresenta informações sobre o aplicativo.
+                </li>
+            </ul>
+
+            <p>
+            --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            </p>
+
+            <h3>4.4. Controle de tema</h3>
+
+            <p>
+                <strong>ThemeController:</strong>
+                arquivo responsável por gerenciar o tema visual
+                do aplicativo, permitindo utilizar o modo claro,
+                o modo escuro ou acompanhar o tema definido
+                no sistema operacional.
+            </p>
+        </section>
+
+        <section>
+            <h2>5. Comunicação com o Supabase</h2>
+
+            <p>
+                O aplicativo utiliza a biblioteca supabase_flutter
+                para se comunicar com os serviços do Supabase.
+                Por meio dessa integração, as telas podem
+                consultar, cadastrar, atualizar e excluir dados,
+                conforme as permissões configuradas.
+            </p>
+
+            <p>
+                O Supabase Auth é utilizado para gerenciar
+                a autenticação dos usuários. O banco de dados
+                PostgreSQL armazena as informações estruturadas,
+                enquanto o Storage é utilizado para guardar
+                arquivos de imagem.
+            </p>
+        </section>
+
+        <section>
+            <h2>6. Fluxo de funcionamento</h2>
+
+            <p>
+                De maneira geral, o funcionamento do aplicativo
+                segue este fluxo:
+            </p>
+
+            <ol>
+                <li>O aplicativo é inicializado.</li>
+                <li>O usuário acessa a tela de autenticação.</li>
+                <li>Após o login, o menu principal é apresentado.</li>
+                <li>O usuário acessa as funcionalidades disponíveis.</li>
+                <li>Quando necessário, o aplicativo consulta ou
+                    modifica os dados no Supabase.</li>
+                <li>Os resultados são apresentados na interface.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>7. Considerações sobre a arquitetura</h2>
+
+            <p>
+                A organização do código em diferentes arquivos
+                facilita a manutenção, a identificação de erros
+                e a evolução das funcionalidades.
+            </p>
+
+            <p>
+                A comunicação com o backend e as permissões
+                de acesso devem respeitar as configurações
+                de segurança do Supabase.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Manual Técnico do Receitando — 2026</p>
+    </footer>
+
+</body>
+</html>
